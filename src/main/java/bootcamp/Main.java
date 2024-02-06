@@ -37,8 +37,14 @@ public class Main {
     Localizador local3= new Localizador(cli1, reservas3);
     repositorioLocalizador.add(local3);
     repositorioLocalizador.mostrarLocalizadores();
-        
+        repositorioLocalizador.mostrarPorTipoReserva();
+        System.out.println("Total de ventas:");
+        System.out.println(repositorioLocalizador.mostrarTotalVentas());
+        System.out.println("Total promedio");
+        System.out.println(repositorioLocalizador.mostrarTotalPromedio());
+
     }
+
 
     
 }

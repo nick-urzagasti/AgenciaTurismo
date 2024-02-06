@@ -72,4 +72,16 @@ private boolean clienteFrecuente;
         this.total *= 0.95;
 
     }
+
+    public long contarReservas(){
+        return reservas.size();
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public double getTotal() {
+        return total;
+    }
 }

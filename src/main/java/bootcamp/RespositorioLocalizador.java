@@ -1,7 +1,9 @@
 package bootcamp;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RespositorioLocalizador {
     private List<Localizador> localizadores;
@@ -23,7 +25,37 @@ public class RespositorioLocalizador {
     }
 
     public long contarReservas(){
-        return this
+        return localizadores.stream().mapToLong(Localizador::contarReservas).sum();
+    }
+
+    public Map<ReservasEnum, List<Reserva>> reservasAgrupadas(){
+        Map<ReservasEnum, List<Reserva>> reservas = new HashMap<>();
+        for(Localizador l: localizadores){
+            for (Reserva r: l.getReservas()){
+                ArrayList<Reserva> res = new ArrayList<>();
+                res.add(r);
+                if (reservas.containsKey(r.getTipoReserva())) {
+                    reservas.get(r.getTipoReserva()).add(r);
+                } else {
+                    reservas.put(r.getTipoReserva(), res);
+                }
+            }
+        }
+        return reservas;
+    }
+
+    public void mostrarPorTipoReserva(){
+        Map<ReservasEnum, List<Reserva>>reservas = reservasAgrupadas();
+        System.out.println(reservas);
+
+    }
+
+    public double mostrarTotalVentas(){
+        return this.localizadores.stream().mapToDouble(Localizador::getTotal).sum();
+    }
+
+    public double mostrarTotalPromedio(){
+        return this.mostrarTotalVentas() / this.contarLocalizadores();
     }
 
 }
