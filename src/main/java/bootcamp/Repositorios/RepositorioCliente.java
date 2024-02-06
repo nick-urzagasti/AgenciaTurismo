@@ -1,4 +1,6 @@
-package bootcamp;
+package bootcamp.Repositorios;
+
+import bootcamp.Models.Cliente;
 
 import java.util.ArrayList;
 import java.util.List;

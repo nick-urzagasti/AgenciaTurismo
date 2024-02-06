@@ -1,4 +1,8 @@
-package bootcamp;
+package bootcamp.Repositorios;
+
+import bootcamp.Models.Localizador;
+import bootcamp.Models.Reserva;
+import bootcamp.Models.TipoReservasEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +32,8 @@ public class RespositorioLocalizador {
         return localizadores.stream().mapToLong(Localizador::contarReservas).sum();
     }
 
-    public Map<ReservasEnum, List<Reserva>> reservasAgrupadas(){
-        Map<ReservasEnum, List<Reserva>> reservas = new HashMap<>();
+    public Map<TipoReservasEnum, List<Reserva>> reservasAgrupadas(){
+        Map<TipoReservasEnum, List<Reserva>> reservas = new HashMap<>();
         for(Localizador l: localizadores){
             for (Reserva r: l.getReservas()){
                 ArrayList<Reserva> res = new ArrayList<>();
@@ -45,7 +49,7 @@ public class RespositorioLocalizador {
     }
 
     public void mostrarPorTipoReserva(){
-        Map<ReservasEnum, List<Reserva>>reservas = reservasAgrupadas();
+        Map<TipoReservasEnum, List<Reserva>>reservas = reservasAgrupadas();
         System.out.println(reservas);
 
     }

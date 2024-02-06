@@ -1,10 +1,10 @@
-package bootcamp;
+package bootcamp.Models;
 
 public class Reserva {
-    private ReservasEnum tipoReserva;
+    private TipoReservasEnum tipoReserva;
     private double costo;
 
-    public Reserva(ReservasEnum tipoReserva, double costo) {
+    public Reserva(TipoReservasEnum tipoReserva, double costo) {
         this.tipoReserva = tipoReserva;
         this.costo = costo;
     }
@@ -13,7 +13,7 @@ public class Reserva {
         return costo;
     }
 
-    public ReservasEnum getTipoReserva() {
+    public TipoReservasEnum getTipoReserva() {
         return tipoReserva;
     }
 

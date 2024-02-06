@@ -1,4 +1,4 @@
-package bootcamp;
+package bootcamp.Models;
 
 import java.util.List;
 
@@ -19,25 +19,25 @@ private boolean clienteFrecuente;
     public Localizador(Cliente cliente, List<Reserva> reservas) {
         this.cliente = cliente;
         this.reservas = reservas;
-        boolean existeHotel = reservas.stream().filter(reserva -> reserva.getTipoReserva().equals(ReservasEnum.HOTEL)).count() > 0;
-        boolean existeViaje = reservas.stream().filter(reserva -> reserva.getTipoReserva().equals(ReservasEnum.VIAJE)).count() > 0;
-        boolean existeComida = reservas.stream().filter(reserva -> reserva.getTipoReserva().equals(ReservasEnum.COMIDA)).count() > 0;
-        boolean existeTransporte = reservas.stream().filter(reserva -> reserva.getTipoReserva().equals(ReservasEnum.TRANSPORTE)).count() > 0;
+        boolean existeHotel = reservas.stream().filter(reserva -> reserva.getTipoReserva().equals(TipoReservasEnum.HOTEL)).count() > 0;
+        boolean existeViaje = reservas.stream().filter(reserva -> reserva.getTipoReserva().equals(TipoReservasEnum.VIAJE)).count() > 0;
+        boolean existeComida = reservas.stream().filter(reserva -> reserva.getTipoReserva().equals(TipoReservasEnum.COMIDA)).count() > 0;
+        boolean existeTransporte = reservas.stream().filter(reserva -> reserva.getTipoReserva().equals(TipoReservasEnum.TRANSPORTE)).count() > 0;
         if(existeHotel && existeComida && existeTransporte && existeViaje){
             this.paqueteCompleto = true;
         }
-        if (reservas.stream().filter((reserva -> reserva.getTipoReserva().equals(ReservasEnum.HOTEL))).count() >= 2) {
+        if (reservas.stream().filter((reserva -> reserva.getTipoReserva().equals(TipoReservasEnum.HOTEL))).count() >= 2) {
             reservas = reservas.stream().map((reserva -> {
-                if (reserva.getTipoReserva().equals(ReservasEnum.HOTEL)) {
+                if (reserva.getTipoReserva().equals(TipoReservasEnum.HOTEL)) {
                     reserva.setCosto(reserva.getCosto() * 0.95);
                     return reserva;
                 }
                 return reserva;
             })).toList();
         }
-        if (reservas.stream().filter((reserva -> reserva.getTipoReserva().equals(ReservasEnum.VIAJE))).count() >= 2) {
+        if (reservas.stream().filter((reserva -> reserva.getTipoReserva().equals(TipoReservasEnum.VIAJE))).count() >= 2) {
             reservas = reservas.stream().map((reserva -> {
-                if (reserva.getTipoReserva().equals(ReservasEnum.VIAJE)) {
+                if (reserva.getTipoReserva().equals(TipoReservasEnum.VIAJE)) {
                     reserva.setCosto(reserva.getCosto() * 0.95);
                     return reserva;
                 }

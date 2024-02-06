@@ -1,4 +1,4 @@
-package bootcamp;
+package bootcamp.Models;
 
 public class Cliente {
     private String nombre;
